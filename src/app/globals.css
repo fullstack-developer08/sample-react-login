@@ -40,3 +40,83 @@ a {
     color-scheme: dark;
   }
 }
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.top-banner {
+  background: purple;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 1px solid #ccc;
+}
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.search-bar {
+  flex: 1;
+  margin: 0 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.navbar li {
+  margin: 0 10px;
+}
+.navbar .login, .navbar .signup {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+}
+.signup {
+  background: purple;
+  color: white;
+  border-radius: 5px;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background: #f8f8f8;
+}
+.text-content h1 {
+  font-size: 32px;
+}
+.btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+.python {
+  background: purple;
+  color: white;
+}
+.excel {
+  background: white;
+  border: 1px solid purple;
+  color: purple;
+}
+.image-content img {
+  width: 300px;
+  border-radius: 10px;
+}
+
