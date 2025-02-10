@@ -10,7 +10,6 @@
   padding: 50px;
   background: #f8f8f8;
 }
-
 .btn {
   padding: 10px 15px;
   border: none;
@@ -30,16 +29,11 @@
   width: 300px;
   border-radius: 10px;
 }
-
-
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
 }
-
-
 
 .btn {
   margin: 10px;

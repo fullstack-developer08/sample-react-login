@@ -2,46 +2,56 @@
 import React from "react";
 import Image from "next/image";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import User from "../user/user";
 import * as jwt_decode from "jwt-decode";
+import User from "../user/User";
+import { Grid2 as Grid } from "@mui/material";
 
-const Login: React.FC = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+interface LoginProps {
+  isLogin: boolean;
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Login: React.FC<LoginProps> = ({ isLogin, setIsLogin }) => {
   const [userName, setUserName] = React.useState<string | null>(null);
 
   const handleGoogleLoginSuccess = (response: any) => {
     const decoded: any = jwt_decode.jwtDecode(response.credential);
     setUserName(decoded.name);
-    setLoggedIn(true);
+    setIsLogin(true);
   };
 
   const handleGoogleLoginFailure = () => {
-    setLoggedIn(false);
+    setIsLogin(false);
   };
 
   return (
     <div>
-      {!loggedIn && (
-        <GoogleOAuthProvider clientId="751952271709-1i32otbqr4jebnj7m4mb91khml8hdaet.apps.googleusercontent.com">
-          <section className="hero">
-            <div className="text-content">
-              <h1>Login Page using Google and Twitter</h1>
-              <p>Get started quickly by logging in with your Google or Twitter account.</p>
-              <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginFailure} />
+      <Grid container spacing={2}>
+        <Grid size={8}>
+          {!isLogin && (
+            <GoogleOAuthProvider clientId="751952271709-1i32otbqr4jebnj7m4mb91khml8hdaet.apps.googleusercontent.com">
+              <section className="hero">
+                <div className="text-content">
+                  <h1>Login using Google</h1>
+                  <p>Get started quickly by logging in with your Google account.</p>
+                  <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginFailure} />
+                </div>
+              </section>
+            </GoogleOAuthProvider>
+          )}
+          {isLogin && (
+            <div>
+              <h2>Welcome, {userName}!</h2>
+              <User />
             </div>
-            <div className="image-content">
-              <Image src="/aa.png" alt="Login Page" width={500} height={300} />
-            </div>
-          </section>
-        </GoogleOAuthProvider>
-      )}
-
-      {loggedIn && (
-        <div>
-          <h2>Welcome, {userName}!</h2>
-          <User />
-        </div>
-      )}
+          )}
+        </Grid>
+        <Grid size={4}>
+          <div className="image-content">
+            <Image src="/login.png" alt="Login Page" width={500} height={200} layout="responsive" />
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
